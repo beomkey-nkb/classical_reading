@@ -1,0 +1,20 @@
+PODS:
+  - MBCircularProgressBar (0.3.5)
+  - TextFieldEffects (1.5.1)
+
+DEPENDENCIES:
+  - MBCircularProgressBar
+  - TextFieldEffects
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - MBCircularProgressBar
+    - TextFieldEffects
+
+SPEC CHECKSUMS:
+  MBCircularProgressBar: 0b795b722a5eb5b0923822f90474e2576a1a7855
+  TextFieldEffects: 7d372f58aeaf9acd9626bbf962680aef926b085d
+
+PODFILE CHECKSUM: 31f3bbd14939eff7e8841a5f32d04791a2b40938
+
+COCOAPODS: 1.6.1
