@@ -119,7 +119,11 @@ class SearchResultController: UIViewController,UITableViewDelegate,UITableViewDa
         location?.text = arrBookInfo[indexPath.row].location
         bkNumber?.text = arrBookInfo[indexPath.row].BookNumber
         bkState?.text = arrBookInfo[indexPath.row].bookState
-        bkLimit?.text = "반납기한: "+arrBookInfo[indexPath.row].bookLimit
+        bkLimit?.text = arrBookInfo[indexPath.row].bookLimit
+        
+        if bkState?.text == "대출중"{
+            bkLimit?.text = arrBookInfo[indexPath.row].bookLimit + "까지"
+        }
         
         return cell
     }
@@ -136,6 +140,7 @@ class SearchResultController: UIViewController,UITableViewDelegate,UITableViewDa
         // 현재 뷰에서 present
         self.present(activityVC, animated: true, completion: nil)
 
+        //선택 후에 선택된 색상을 없애줌
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
