@@ -1,20 +1,36 @@
 PODS:
+  - Alamofire (4.8.0)
+  - Kanna (4.0.2)
   - MBCircularProgressBar (0.3.5)
+  - SwiftSoup (1.7.4)
+  - SwiftyJSON (4.2.0)
   - TextFieldEffects (1.5.1)
 
 DEPENDENCIES:
+  - Alamofire (~> 4.4)
+  - Kanna (~> 4.0.0)
   - MBCircularProgressBar
+  - SwiftSoup
+  - SwiftyJSON (~> 4.0)
   - TextFieldEffects
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - Kanna
     - MBCircularProgressBar
+    - SwiftSoup
+    - SwiftyJSON
     - TextFieldEffects
 
 SPEC CHECKSUMS:
+  Alamofire: 3ec537f71edc9804815215393ae2b1a8ea33a844
+  Kanna: c60b61d72554bf04ed1ee074f9b379855cab4892
   MBCircularProgressBar: 0b795b722a5eb5b0923822f90474e2576a1a7855
+  SwiftSoup: 92f5b348c131aed8af04f4326db1579ab19fa08c
+  SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
   TextFieldEffects: 7d372f58aeaf9acd9626bbf962680aef926b085d
 
-PODFILE CHECKSUM: 31f3bbd14939eff7e8841a5f32d04791a2b40938
+PODFILE CHECKSUM: 12b1d3724874134aa890a5e0a7c68ac16ed15b51
 
 COCOAPODS: 1.6.1

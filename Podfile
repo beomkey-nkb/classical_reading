@@ -6,6 +6,10 @@ target 'classical_reading' do
   use_frameworks!
 	pod "MBCircularProgressBar"
 	pod 'TextFieldEffects'
+  	pod 'Kanna', '~> 4.0.0'
+  	pod 'Alamofire', '~> 4.4'
+  	pod 'SwiftSoup'
+ 	pod 'SwiftyJSON', '~> 4.0'
 
   # Pods for classical_reading
 

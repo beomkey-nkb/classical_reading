@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		425D0633EBB1053F37214A2A /* Pods_classical_reading.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E59FE5030F3D6CB1CE72E645 /* Pods_classical_reading.framework */; };
+		C12901242276BDCE005E5432 /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12901232276BDCE005E5432 /* SearchController.swift */; };
+		C12901262276BF9B005E5432 /* SearchResultController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12901252276BF9B005E5432 /* SearchResultController.swift */; };
 		C1424F00223F7202007C7D01 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1424EFF223F7202007C7D01 /* AppDelegate.swift */; };
 		C1424F02223F7202007C7D01 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1424F01223F7202007C7D01 /* ViewController.swift */; };
 		C1424F05223F7202007C7D01 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1424F03223F7202007C7D01 /* Main.storyboard */; };
@@ -29,6 +31,8 @@
 
 /* Begin PBXFileReference section */
 		2EA58B31CF2892B11F7474E8 /* Pods-classical_reading.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-classical_reading.debug.xcconfig"; path = "Target Support Files/Pods-classical_reading/Pods-classical_reading.debug.xcconfig"; sourceTree = "<group>"; };
+		C12901232276BDCE005E5432 /* SearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
+		C12901252276BF9B005E5432 /* SearchResultController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultController.swift; sourceTree = "<group>"; };
 		C1424EFC223F7202007C7D01 /* classical_reading.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = classical_reading.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1424EFF223F7202007C7D01 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C1424F01223F7202007C7D01 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -103,9 +107,11 @@
 			isa = PBXGroup;
 			children = (
 				C1424EFF223F7202007C7D01 /* AppDelegate.swift */,
+				C1A627692275A4F4008C596F /* webController.swift */,
 				C1424F01223F7202007C7D01 /* ViewController.swift */,
 				C1424F03223F7202007C7D01 /* Main.storyboard */,
-				C1A627692275A4F4008C596F /* webController.swift */,
+				C12901252276BF9B005E5432 /* SearchResultController.swift */,
+				C12901232276BDCE005E5432 /* SearchController.swift */,
 				C1A62765227576F4008C596F /* CardViewController.swift */,
 				C1A62766227576F4008C596F /* CardViewController.xib */,
 				C1A6276322754258008C596F /* BookselectController.swift */,
@@ -206,14 +212,22 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-classical_reading/Pods-classical_reading-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Kanna/Kanna.framework",
 				"${BUILT_PRODUCTS_DIR}/MBCircularProgressBar/MBCircularProgressBar.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftSoup/SwiftSoup.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/TextFieldEffects/TextFieldEffects.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kanna.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBCircularProgressBar.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftSoup.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TextFieldEffects.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -250,6 +264,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C12901262276BF9B005E5432 /* SearchResultController.swift in Sources */,
 				C1597F1D223F77F1009F5F01 /* viewCustom.swift in Sources */,
 				C1B7D54522744C1700B29646 /* NotiController.swift in Sources */,
 				C1A6276A2275A4F4008C596F /* webController.swift in Sources */,
@@ -258,6 +273,7 @@
 				C1A6276422754258008C596F /* BookselectController.swift in Sources */,
 				C1A62767227576F4008C596F /* CardViewController.swift in Sources */,
 				C1424F02223F7202007C7D01 /* ViewController.swift in Sources */,
+				C12901242276BDCE005E5432 /* SearchController.swift in Sources */,
 				C1424F00223F7202007C7D01 /* AppDelegate.swift in Sources */,
 				C1B7D5472274854800B29646 /* SettingController.swift in Sources */,
 			);
