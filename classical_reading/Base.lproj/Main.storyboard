@@ -1284,7 +1284,8 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Lyz-uJ-PPk" kind="show" id="6mx-S4-V0X"/>
+                                    <action selector="login_Action:" destination="7en-lv-ZQe" eventType="touchUpInside" id="Eys-fv-p3A"/>
+                                    <segue destination="Lyz-uJ-PPk" kind="presentation" identifier="manualWind" id="5l8-9w-eJp"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hp4-GZ-lkA">
@@ -1314,7 +1315,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="bc6-ky-LOA">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="Lyz-uJ-PPk" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBar" automaticallyAdjustsScrollViewInsets="NO" id="Lyz-uJ-PPk" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="yqP-kG-F7N">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>

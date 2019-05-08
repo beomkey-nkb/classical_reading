@@ -56,12 +56,14 @@ class SettingController: UIViewController,UITableViewDelegate,UITableViewDataSou
         {
             if let rvc = self.storyboard?.instantiateViewController(withIdentifier: "webController") as? webController {
                 rvc.tableIndex = indexPath.row
-                tableView.deselectRow(at: indexPath, animated: true)
+                tableView.deselectRow(at: indexPath, animated: true)                
                 self.present(rvc, animated: true, completion: nil)
             }
         }
         else if indexPath.row == 4 {
             tableView.deselectRow(at: indexPath, animated: true)
+            UserDefaults.standard.removeObject(forKey: "id")
+            UserDefaults.standard.removeObject(forKey: "pw")
             dismiss(animated: true, completion: nil)
         }
     }

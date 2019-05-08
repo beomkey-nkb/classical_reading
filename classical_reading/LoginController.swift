@@ -34,6 +34,18 @@ class LoginController: UIViewController,UITextFieldDelegate {
         sejongLogo.layer.borderWidth = 1
         sejongLogo.layer.borderColor = UIColor.clear.cgColor
         sejongLogo.clipsToBounds = true//이미지 동그랗게
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        if let userID = UserDefaults.standard.string(forKey: "id"){
+            self.textField.text = userID
+            self.password.text = UserDefaults.standard.string(forKey: "pw")!
+            print(userID)
+            performSegue(withIdentifier: "manualWind", sender: self)
+        }
+        
     }
     
     @objc func keyboardWillShow(_ sender:Notification){
@@ -62,5 +74,17 @@ class LoginController: UIViewController,UITextFieldDelegate {
         }
     }
     
-
+    
+    @IBAction func login_Action(_ sender: Any) {
+        
+        if btn_box.isSelected == true{
+            print("auto login")
+            
+            UserDefaults.standard.set(self.textField.text, forKey: "id")
+            UserDefaults.standard.set(self.password.text, forKey: "pw")
+        }
+        
+        performSegue(withIdentifier: "manualWind", sender: self)
+    }
+    
 }
