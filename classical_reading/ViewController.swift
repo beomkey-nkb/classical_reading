@@ -13,6 +13,10 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     var refreshControl = UIRefreshControl()
     @IBOutlet weak var mainTableView: UITableView!
     /////////////////////////
+    var reserveTime = "20:19"
+    var reservedDate = "2019-05-09"
+    var reservedBookName = "총,균,쇠"
+    var dataLive = "1"
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 4
@@ -35,7 +39,35 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         }
         else{
             let cell = tableView.dequeueReusableCell(withIdentifier: "reserveDisplay")!
-            return cell
+            let timeLabel = cell.viewWithTag(105) as! UILabel
+            let reservedDateLabel = cell.viewWithTag(106) as! UILabel
+            let reservedBookNameLabel = cell.viewWithTag(107) as! UILabel
+            let stateLabel = cell.viewWithTag(108) as! UILabel
+            let ImageNext = cell.viewWithTag(109) as! UIImageView
+            let NotDataLabel = cell.viewWithTag(110) as! UILabel
+            
+            //dataLive가 1일 때만 데이터 로드
+            if dataLive == "1"{
+                timeLabel.text = reserveTime + "부터 20분동안"
+                reservedDateLabel.text = reservedDate
+                reservedBookNameLabel.text = "도서명: "+reservedBookName
+                NotDataLabel.isHidden = true
+                timeLabel.isHidden = false
+                reservedDateLabel.isHidden = false
+                reservedBookNameLabel.isHidden = false
+                stateLabel.isHidden = false
+                ImageNext.isHidden = false
+                return cell
+            }
+            else{//0일 경우 데이터 로드 안함
+                timeLabel.isHidden = true
+                reservedDateLabel.isHidden = true
+                reservedBookNameLabel.isHidden = true
+                stateLabel.isHidden = true
+                ImageNext.isHidden = true
+                NotDataLabel.isHidden = false
+                return cell
+            }
         }
         
     }
@@ -57,8 +89,18 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 3 {
-            if let avc = self.storyboard?.instantiateViewController(withIdentifier: "reserved") as? NotiController{
-                self.present(avc, animated: true, completion: nil)
+            
+            //dataLive가 1일 때만 선택헤서 화면전환 가능
+            if dataLive == "1"{
+                if let avc = self.storyboard?.instantiateViewController(withIdentifier: "reserved") as? NotiController{
+                    avc.dayString = reservedDate
+                    avc.timeString = reserveTime
+                    avc.bookName = reservedBookName
+                    self.present(avc, animated: true, completion: nil)
+                }
+            }
+            else{
+                
             }
         }
     }
