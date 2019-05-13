@@ -62,6 +62,7 @@ class NotiController: UIViewController {
     }
     
     @IBAction func reserveCancel(_ sender: Any) {
+        //서버 통신
         
     }
     
@@ -84,8 +85,14 @@ class NotiController: UIViewController {
             dateFormatter.timeZone = NSTimeZone(name:  "KST") as TimeZone? //시간 기준 한국으로 변경
             let EndtimeDate = dateFormatter.date(from:allTime)
             
-            let beforeHour = EndtimeDate!
+            let beforeHour = EndtimeDate! - 3600
             var components1 = self.calendar.dateComponents([.year, .month, .day, .hour, .minute],from: beforeHour)
+            
+            let dateFormatter1 = DateFormatter()
+            dateFormatter1.dateFormat = "yyyy-MM-dd HH:mm"
+            
+            let dateString = dateFormatter1.string(from: beforeHour)
+            
             
             let content = UNMutableNotificationContent()
             content.title = "세종대 고전독서인증"
@@ -97,7 +104,7 @@ class NotiController: UIViewController {
             UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
             ///////////////////
             
-            reservedTime.text = allTime
+            reservedTime.text = dateString
             reservedTime.isHidden = false
             reservedTimeLabel.isHidden = false
             reservedCencelButton.isHidden = false

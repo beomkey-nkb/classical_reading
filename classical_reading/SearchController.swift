@@ -54,11 +54,22 @@ class SearchController: UIViewController,UITextFieldDelegate,UIPickerViewDelegat
 
     
     @IBAction func searchAction(_ sender: Any) {
-        if let dvc = self.storyboard?.instantiateViewController(withIdentifier: "searchResult") as? SearchResultController{
-            dvc.bookISBN = ISBN[fieldCode][bookNumber]
-            dvc.bookName = bkName[fieldCode][bookNumber]
-            self.present(dvc, animated: true, completion: nil)
+        if domain.text == "" || bookName.text == ""{
+            ////////alert 활용
+            let alertController = UIAlertController(title: "선택",message: "선택을 완료하지 않았습니다.", preferredStyle: UIAlertController.Style.alert)
             
+            let cancelButton = UIAlertAction(title: "취소", style: UIAlertAction.Style.cancel, handler: nil)
+            alertController.addAction(cancelButton)
+            self.present(alertController,animated: true,completion: nil)
+            ///////////////
+        }
+        else{
+            if let dvc = self.storyboard?.instantiateViewController(withIdentifier: "searchResult") as? SearchResultController{
+                dvc.bookISBN = ISBN[fieldCode][bookNumber]
+                dvc.bookName = bkName[fieldCode][bookNumber]
+                self.present(dvc, animated: true, completion: nil)
+                
+            }
         }
     }
     

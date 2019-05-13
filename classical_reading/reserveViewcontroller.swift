@@ -14,7 +14,7 @@ import UIKit
 import TextFieldEffects
 class reserveViewcontroller: UIViewController,UITextFieldDelegate,UITableViewDelegate,UITableViewDataSource,UIPickerViewDelegate,UIPickerViewDataSource{
     var Date = [String]()//날짜 선택
-    
+    var selectTime = ""
     
     ////////////////table View **************************
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -24,7 +24,6 @@ class reserveViewcontroller: UIViewController,UITextFieldDelegate,UITableViewDel
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell")!
         var TimeLabel = cell.viewWithTag(102) as? UILabel
-        
         TimeLabel?.text = Time[indexPath.row]
         
         return cell
@@ -32,10 +31,26 @@ class reserveViewcontroller: UIViewController,UITextFieldDelegate,UITableViewDel
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //tableView 선택 동작
-        let uvc = self.storyboard!.instantiateViewController(withIdentifier: "bookSelect")
-        uvc.modalTransitionStyle = UIModalTransitionStyle.coverVertical
-        tableView.deselectRow(at: indexPath, animated: true)
-        self.present(uvc, animated: true, completion: nil)
+        
+        if let uvc = self.storyboard?.instantiateViewController(withIdentifier: "bookSelect") as? BookselectController{
+            if reserveDate.text == ""{
+                ////////alert 활용
+                let alertController = UIAlertController(title: "날짜 선택",message: "날짜가 선택되지 않았습니다.", preferredStyle: UIAlertController.Style.alert)
+                
+                let cancelButton = UIAlertAction(title: "취소", style: UIAlertAction.Style.cancel, handler: nil)
+                alertController.addAction(cancelButton)
+                self.present(alertController,animated: true,completion: nil)
+                tableView.deselectRow(at: indexPath, animated: true)
+                ////////////////
+            }else{
+                uvc.selectedTime = Time[indexPath.row]+"부터 20분동안"
+                uvc.selectedDay = reserveDate.text!
+                tableView.deselectRow(at: indexPath, animated: true)
+                self.present(uvc, animated: true, completion: nil)
+            }
+        }
+        
+        
         
     }
     
@@ -67,7 +82,7 @@ class reserveViewcontroller: UIViewController,UITextFieldDelegate,UITableViewDel
         let cal = Calendar(identifier: .gregorian)
         
         let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy년 MM월 dd일"
+        formatter.dateFormat = "yyyy-MM-dd"
         
         var today = NSDate()
         var comps = cal.dateComponents([.weekday], from: today as Date)

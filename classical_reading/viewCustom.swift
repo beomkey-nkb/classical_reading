@@ -59,3 +59,13 @@ class ButtonCircle:UIButton{
     }
 }
 
+class imageViewCircle:UIImageView{
+    required init(coder aDecoder: NSCoder){
+        super.init(coder: aDecoder)!
+        self.layer.cornerRadius = self.frame.height/2
+        self.layer.borderWidth = 1
+        self.layer.borderColor = UIColor.clear.cgColor
+        self.clipsToBounds = true
+    }
+}
+

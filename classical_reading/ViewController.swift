@@ -8,6 +8,10 @@
 
 import UIKit
 
+var name = "홍길동"
+var schoolNumber = "14011113"
+var major = "만화애니매이션학과"
+
 class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
     //refresh 변수 설정 및 TableView 아울렛 변수 설정
     var refreshControl = UIRefreshControl()
@@ -27,14 +31,23 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         
         if indexPath.row == 0{
             let cell = tableView.dequeueReusableCell(withIdentifier: "MainUser")!
+            //서버 연동 코드
+            
+            
             return cell
         }
         else if indexPath.row == 1{
             let cell = tableView.dequeueReusableCell(withIdentifier: "totalbook")!
+            //서버 연동 코드
+            
+            
             return cell
         }
         else if indexPath.row == 2{
             let cell = tableView.dequeueReusableCell(withIdentifier: "totalbook2")!
+            //서버 연동 코드
+            
+            
             return cell
         }
         else{
@@ -88,8 +101,12 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == 3 {
-            
+        if indexPath.row == 1 {
+            if let avc = self.storyboard?.instantiateViewController(withIdentifier: "infoTable") as? infoTableViewController{
+                self.present(avc, animated: true, completion: nil)
+            }
+        }
+        else if indexPath.row == 3 {
             //dataLive가 1일 때만 선택헤서 화면전환 가능
             if dataLive == "1"{
                 if let avc = self.storyboard?.instantiateViewController(withIdentifier: "reserved") as? NotiController{
@@ -107,6 +124,9 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //서버 연동 코드
+        
+        
         
         // refresh 초기 설정
         self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")

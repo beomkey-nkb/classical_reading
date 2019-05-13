@@ -11,6 +11,9 @@ import TextFieldEffects
 
 class BookselectController: UIViewController{
     
+    var selectedDay = ""
+    var selectedTime = ""
+    
     enum CardState {
         case expanded
         case collapsed
@@ -40,6 +43,11 @@ class BookselectController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        userName.text = name
+        IDNumber.text = schoolNumber
+        Department.text = major
+        reserveDate.text = selectedDay
+        reserveTime.text = selectedTime
         
         setupCard()
     }

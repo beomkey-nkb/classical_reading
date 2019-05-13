@@ -16,6 +16,8 @@ class CardViewController: UIViewController,UITextFieldDelegate,UIPickerViewDeleg
     @IBOutlet weak var domain: AkiraTextField!
     @IBOutlet weak var bookName: AkiraTextField!
     
+    var sDay = ""
+    var sTime = ""
     
     
     override func viewDidLoad() {
@@ -48,7 +50,34 @@ class CardViewController: UIViewController,UITextFieldDelegate,UIPickerViewDeleg
 
     
     @IBAction func reserveButton(_ sender: Any) {
-    
+        if domain.text == "" || bookName.text == ""{
+            ////////alert 활용
+            let alertController = UIAlertController(title: "선택",message: "선택을 완료하지 않았습니다.", preferredStyle: UIAlertController.Style.alert)
+            
+            let cancelButton = UIAlertAction(title: "취소", style: UIAlertAction.Style.cancel, handler: nil)
+            alertController.addAction(cancelButton)
+            self.present(alertController,animated: true,completion: nil)
+            ////////////////
+        }else{
+            ////////alert 활용
+            let alertController = UIAlertController(title: "신청",message: "완료되었습니다.", preferredStyle: UIAlertController.Style.alert)
+            
+            let cancelButton = UIAlertAction(title: "확인", style: UIAlertAction.Style.cancel){
+                (action) in
+                //서버통신 코드
+                
+                
+                
+                
+                self.presentingViewController?.dismiss(animated: true, completion: nil)
+            }
+            
+            alertController.addAction(cancelButton)
+            self.present(alertController,animated: true,completion: nil)
+            ////////////////
+            
+            
+        }
     }
     
     @IBAction func cancelButton(_ sender: Any) {
