@@ -7,6 +7,7 @@
 
 import UIKit
 import UserNotifications
+import Alamofire
 
 class NotiController: UIViewController {
     
@@ -63,7 +64,29 @@ class NotiController: UIViewController {
     
     @IBAction func reserveCancel(_ sender: Any) {
         //서버 통신
+        let url_status3 = "http://15.164.113.118:3000/?status=3&id=\(schoolNumber)"
         
+        let rea = Alamofire.request(url_status3, method: .post, encoding: URLEncoding.methodDependent, headers: [:]).responseString { (response) in
+            print(response.result.value!)
+            let datat = response.result.value!.data(using: .utf8)
+            
+            do {
+                let data = try JSONDecoder().decode(예약응답결과처리.self, from: datat!)
+                
+                if data.id == "1"{
+                    let alertController_3 = UIAlertController(title: "예약",message: "예약취소가 완료되었습니다!", preferredStyle: UIAlertController.Style.alert)
+                    let cancelButton_3 = UIAlertAction(title: "확인", style: UIAlertAction.Style.cancel){
+                        (action) in
+                        self.presentingViewController?.dismiss(animated: true, completion: nil)
+                    }
+                    alertController_3.addAction(cancelButton_3)
+                    self.present(alertController_3,animated: true,completion: nil)
+                }
+            }
+            catch{
+                print(error)
+            }
+        }
     }
     
     @IBAction func timeReserve(_ sender: Any) {

@@ -9,6 +9,9 @@
 import UIKit
 import TextFieldEffects
 
+var 예약일자 = ""
+var 예약시간 = ""
+
 class BookselectController: UIViewController{
     
     var selectedDay = ""
@@ -48,7 +51,7 @@ class BookselectController: UIViewController{
         Department.text = major
         reserveDate.text = selectedDay
         reserveTime.text = selectedTime
-        
+        예약일자 = selectedDay
         setupCard()
     }
     

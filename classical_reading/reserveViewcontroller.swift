@@ -12,6 +12,13 @@ var ISBN = [["9788930606233","9788991290280","9788930606240","9788908062238","97
 
 import UIKit
 import TextFieldEffects
+
+struct 요일정보추출{
+    var 날짜:String
+    var 요일:String
+}
+var 요일정보 = [요일정보추출]()
+
 class reserveViewcontroller: UIViewController,UITextFieldDelegate,UITableViewDelegate,UITableViewDataSource,UIPickerViewDelegate,UIPickerViewDataSource{
     var Date = [String]()//날짜 선택
     var selectTime = ""
@@ -44,6 +51,7 @@ class reserveViewcontroller: UIViewController,UITextFieldDelegate,UITableViewDel
                 ////////////////
             }else{
                 uvc.selectedTime = Time[indexPath.row]+"부터 20분동안"
+                예약시간 = Time[indexPath.row]
                 uvc.selectedDay = reserveDate.text!
                 tableView.deselectRow(at: indexPath, animated: true)
                 self.present(uvc, animated: true, completion: nil)
@@ -91,6 +99,7 @@ class reserveViewcontroller: UIViewController,UITextFieldDelegate,UITableViewDel
         if comps.weekday! != 7 && comps.weekday! != 1 {
             //주말을 제외시켜서 저장
             Date.append(formatter.string(from: today as Date))
+            
         }
         
         for i in 1...29{
@@ -100,6 +109,27 @@ class reserveViewcontroller: UIViewController,UITextFieldDelegate,UITableViewDel
             if comps.weekday! != 7 && comps.weekday! != 1 {
                 //주말 제외
                 Date.append(formatter.string(from: today as Date))
+                //요일정보 추출
+                if comps.weekday! == 2{
+                    let trash_요일정보 = 요일정보추출(날짜: formatter.string(from: today as Date), 요일: "월")
+                    요일정보.append(trash_요일정보)
+                }
+                else if comps.weekday! == 3{
+                    let trash_요일정보 = 요일정보추출(날짜: formatter.string(from: today as Date), 요일: "화")
+                    요일정보.append(trash_요일정보)
+                }
+                else if comps.weekday! == 4{
+                    let trash_요일정보 = 요일정보추출(날짜: formatter.string(from: today as Date), 요일: "수")
+                    요일정보.append(trash_요일정보)
+                }
+                else if comps.weekday! == 5{
+                    let trash_요일정보 = 요일정보추출(날짜: formatter.string(from: today as Date), 요일: "목")
+                    요일정보.append(trash_요일정보)
+                }
+                else if comps.weekday! == 6{
+                    let trash_요일정보 = 요일정보추출(날짜: formatter.string(from: today as Date), 요일: "금")
+                    요일정보.append(trash_요일정보)
+                }
             }
         }
         print(Date)

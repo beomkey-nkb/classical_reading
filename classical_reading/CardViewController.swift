@@ -8,6 +8,11 @@
 
 import UIKit
 import TextFieldEffects
+import Alamofire
+
+struct 예약응답결과처리:Codable{
+    let id:String
+}
 
 class CardViewController: UIViewController,UITextFieldDelegate,UIPickerViewDelegate,UIPickerViewDataSource {
 
@@ -60,20 +65,51 @@ class CardViewController: UIViewController,UITextFieldDelegate,UIPickerViewDeleg
             ////////////////
         }else{
             ////////alert 활용
-            let alertController = UIAlertController(title: "신청",message: "완료되었습니다.", preferredStyle: UIAlertController.Style.alert)
-            
-            let cancelButton = UIAlertAction(title: "확인", style: UIAlertAction.Style.cancel){
-                (action) in
-                //서버통신 코드
-                
-                
-                
-                
-                self.presentingViewController?.dismiss(animated: true, completion: nil)
+            //서버통신 코드
+            var day_요일 = ""
+            for i in 0..<요일정보.count{
+                if 요일정보[i].날짜 == 예약일자{
+                    day_요일 = 요일정보[i].요일
+                    print(1)
+                }
             }
+            let bookname_String = self.bookName.text!
+            let url_status2 = "http://15.164.113.118:3000/?status=2&id=\(schoolNumber)&title=\(bookname_String)&hakgi=2019-1학기&date=\(예약일자)&time=\(예약시간)&day=\(day_요일)"
             
-            alertController.addAction(cancelButton)
-            self.present(alertController,animated: true,completion: nil)
+            let encoded = url_status2.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+            let final_url = URL(string: encoded)!
+            
+            let rek = Alamofire.request(final_url, method: .post, encoding: URLEncoding.methodDependent, headers: [:]).responseString { (response) in
+                
+                let datat = response.result.value!.data(using: .utf8)
+                
+                do {
+                    let data = try JSONDecoder().decode(예약응답결과처리.self, from: datat!)
+                    print(data.id)
+                    
+                    if data.id == "0"{
+                        let alertController_실패 = UIAlertController(title: "예약",message: "예약이 이미 존재합니다.", preferredStyle: UIAlertController.Style.alert)
+                        let cancelButton_실패 = UIAlertAction(title: "확인", style: UIAlertAction.Style.cancel){
+                            (action) in
+                            self.presentingViewController?.dismiss(animated: true, completion: nil)
+                        }
+                        alertController_실패.addAction(cancelButton_실패)
+                        self.present(alertController_실패,animated: true,completion: nil)
+                    }
+                    else{
+                        let alertController_성공 = UIAlertController(title: "예약",message: "예약이 완료되었습니다!", preferredStyle: UIAlertController.Style.alert)
+                        let cancelButton_성공 = UIAlertAction(title: "확인", style: UIAlertAction.Style.cancel){
+                            (action) in
+                            self.presentingViewController?.dismiss(animated: true, completion: nil)
+                        }
+                        alertController_성공.addAction(cancelButton_성공)
+                        self.present(alertController_성공,animated: true,completion: nil)
+                    }
+                }
+                catch{
+                    print(error)
+                }
+            }
             ////////////////
             
             
