@@ -103,7 +103,7 @@ struct Form: Codable {
         
         enum CodingKeys : String, CodingKey {
             case 년도학기 = "년도/학기"
-            case 대회명 = "과목명"
+            case 대회명 = "대회명"
             case 영역명 = "영역명"
             case 도서명 = "도서명"
         }
@@ -259,13 +259,14 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 1 {
-            if let avc = self.storyboard?.instantiateViewController(withIdentifier: "infoTable") as? infoTableViewController{
-                self.present(avc, animated: true, completion: nil)
-            }
+//            if let avc = self.storyboard?.instantiateViewController(withIdentifier: "infoTable") as? infoTableViewController{
+//                self.present(avc, animated: true, completion: nil)
+//            }
         }
         else if indexPath.row == 3 {
             //dataLive가 1일 때만 선택헤서 화면전환 가능
             if array_예약확인정보[0].id != "1"{
+                tableView.deselectRow(at: indexPath, animated: true)
                 if let avc = self.storyboard?.instantiateViewController(withIdentifier: "reserved") as? NotiController{
                     avc.dayString = array_예약확인정보[0].date
                     avc.timeString = array_예약확인정보[0].time

@@ -166,8 +166,10 @@ class infoTableViewController: UITableViewController {
             }
             
             대회명!.text = array_대회인증현황[indexPath.row - (array_시험인증현황.count + 2 + array_대체과목현황.count + 1)].대회명
+            print(array_대회인증현황)
             영역!.text = array_대회인증현황[indexPath.row - (array_시험인증현황.count + 2 + array_대체과목현황.count + 1)].영역명
             학기!.text = array_대회인증현황[indexPath.row - (array_시험인증현황.count + 2 + array_대체과목현황.count + 1)].년도학기
+            
             
             if 학기!.text == "검색된결과가없습니다."{
                 대회명!.text = "검색된결과가없습니다."
@@ -181,10 +183,12 @@ class infoTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == 0 {
-            dismiss(animated: true, completion: nil)
-        }
     }
+    
+    @IBAction func dismisAction(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
 
 }
 extension UIColor {

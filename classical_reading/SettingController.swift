@@ -21,6 +21,9 @@ class SettingController: UIViewController,UITableViewDelegate,UITableViewDataSou
         
         if indexPath.row == 0{
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell1")!
+            let setting_이름 = cell.viewWithTag(1) as? UILabel
+            
+            setting_이름!.text = name + "님의 프로필"
             return cell
         }
         else if indexPath.row == 1{
