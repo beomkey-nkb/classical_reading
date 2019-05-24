@@ -10,6 +10,7 @@ target 'classical_reading' do
   	pod 'Alamofire', '~> 4.4'
   	pod 'SwiftSoup'
  	pod 'SwiftyJSON', '~> 4.0'
+	pod 'XLPagerTabStrip', '~> 8.0'
 
   # Pods for classical_reading
 
