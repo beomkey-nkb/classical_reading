@@ -18,4 +18,5 @@
 
 > 사용 화면
 
-![그림1](https://user-images.githubusercontent.com/31726630/90327600-22e75900-dfd0-11ea-8613-fe67d61a07b4.png)
+![그림1](https://user-images.githubusercontent.com/31726630/90327621-5f1ab980-dfd0-11ea-9cb6-a45d38d46fc9.png)
+
